@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Code 75";
+  src: url("./assets/fonts/Code_7x5.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Cyberpunk";
+  src: url("./assets/fonts/Cyberpunk.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Matrix Dots";
+  src: url("./assets/fonts/Matrix_Complex_NC.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "JD Code";
+  src: url("./assets/fonts/jd_code.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Mono Code";
+  src: url("./assets/fonts/MonoCode.ttf") format("truetype");
+}
