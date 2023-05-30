@@ -5,13 +5,24 @@ import Cameras from "../../assets/images/cameras.jpg";
 import OpenFolder from "../../assets/images/open-folder2.png";
 import ClosedFolder from "../../assets/images/closed-folder2.png";
 import Disk from "../../assets/images/diskette2.png";
+import { Modal } from "../../components/modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { openModal } from "../../store/slices/UI/UISlice";
 
 export const Home = () => {
-  const [proyectsToggled, setProyectsToggled] = useState(false);
+  const dispatch = useDispatch();
+  const { modalOpen, modalType } = useSelector((state) => state.ui);
+
+  const toggleProjects = () => {
+    !modalOpen && dispatch(openModal({ type: "projects" }));
+
+    modalOpen && dispatch(closeModal());
+  };
 
   return (
     <div className="max-w-screen overflow-hidden">
       <Layout>
+        <Modal />
         <video className="w-screen" src={GreenCodeMatrix} autoPlay loop muted />
         <div className="absolute flex flex-col grow-0 overflow-hidden">
           <section className="rounded-lg border-2 mx-20 mt-20 flex flex-col bg-gray-700 bg-opacity-90 max-h-fit">
@@ -41,18 +52,18 @@ export const Home = () => {
                 <div className="flex flex-row justify-around mt-10">
                   <div
                     className="flex flex-col group cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto my-auto"
-                    onClick={() => setProyectsToggled(!proyectsToggled)}
+                    onClick={toggleProjects}
                   >
                     <div className="relative">
                       <img
                         className="shadow-md shadow-matrix-dark-green rounded-md"
-                        src={proyectsToggled ? OpenFolder : ClosedFolder}
-                        width={proyectsToggled ? 130 : 120}
+                        src={modalOpen ? OpenFolder : ClosedFolder}
+                        width={modalOpen ? 130 : 120}
                       />
 
                       <h3
                         className={`absolute top-1/2 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black ${
-                          proyectsToggled && "hidden"
+                          modalOpen && "hidden"
                         }`}
                       >
                         Projects
