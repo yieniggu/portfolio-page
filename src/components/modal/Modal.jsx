@@ -17,7 +17,9 @@ export const Modal = () => {
   return (
     <div
       id="close1"
-      className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center z-50 overflow-y-auto"
+      className={`fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center ${
+        modalType !== "projects" && "items-center"
+      } z-50 overflow-y-auto`}
       onClick={onCloseModal}
     >
       <Terminal>

@@ -55,9 +55,9 @@ export const Home = () => {
                       1000,
                       "DATA SCIENTISTS",
                       1000,
-                      "DEVS WEB3",
+                      "DEVs WEB3",
                       1000,
-                      "AI ENGINEERS",
+                      "INGENIEROS DE IA",
                       1000,
                     ]}
                     speed={10}

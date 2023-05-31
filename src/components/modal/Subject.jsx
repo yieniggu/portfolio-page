@@ -61,7 +61,7 @@ export const Subject = () => {
           <h3 className="text-cyan-400">desconocido$</h3>
           <TypeAnimation
             sequence={[
-              "el perfil que se te mostrara a continuacion corresponde a una de las mentes mas brillantes de la matrix.",
+              "el perfil que se te mostrara a continuacion corresponde a una de las mentes mas brillantes de la matrix",
             ]}
             speed={80}
             repeat={0}
