@@ -1,10 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../store/slices/UI/UISlice";
 import { Terminal } from "../terminal";
+import { Subject } from "./Subject";
 
 export const Modal = () => {
   const { modalOpen, modalType } = useSelector((state) => state.ui);
+  const dispatch = useDispatch();
 
   const onCloseModal = (e) => {
     e.target.id.includes("close") && dispatch(closeModal());
@@ -19,7 +21,8 @@ export const Modal = () => {
       onClick={onCloseModal}
     >
       <Terminal>
-        <div>Hola</div>
+        {modalType === "projects" && <h1>Projects</h1>}
+        {modalType?.toLowerCase().includes("subject") && <Subject />}
       </Terminal>
     </div>
   );

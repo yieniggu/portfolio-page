@@ -14,9 +14,13 @@ export const Home = () => {
   const { modalOpen, modalType } = useSelector((state) => state.ui);
 
   const toggleProjects = () => {
-    !modalOpen && dispatch(openModal({ type: "projects" }));
+    !modalOpen && dispatch(openModal("projects"));
 
     modalOpen && dispatch(closeModal());
+  };
+
+  const toggleSubject = (subject) => {
+    !modalOpen && dispatch(openModal(subject));
   };
 
   return (
@@ -57,44 +61,72 @@ export const Home = () => {
                     <div className="relative">
                       <img
                         className="shadow-md shadow-matrix-dark-green rounded-md"
-                        src={modalOpen ? OpenFolder : ClosedFolder}
-                        width={modalOpen ? 130 : 120}
+                        src={
+                          modalOpen && modalType === "projects"
+                            ? OpenFolder
+                            : ClosedFolder
+                        }
+                        width={
+                          modalOpen && modalType === "projects" ? 130 : 120
+                        }
                       />
 
                       <h3
                         className={`absolute top-1/2 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black ${
-                          modalOpen && "hidden"
+                          modalOpen && modalType === "projects" && "hidden"
                         }`}
                       >
                         Projects
                       </h3>
                     </div>
                   </div>
-                  <div className="relative cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto">
+                  <div
+                    className="relative cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto"
+                    name="subjectx"
+                    onClick={() => toggleSubject("SubjectX")}
+                  >
                     <img
                       className="my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
                       src={Disk}
                       width={140}
+                      name="subjectx"
                     />
 
-                    <h3 className="absolute top-10 text-md text-center w-full border-2 border-red-700 font-cyber text-red-700 bg-red-500">
+                    <h3
+                      className="absolute top-10 text-md text-center w-full border-2 border-red-700 font-cyber text-red-700 bg-red-500"
+                      name="subjectx"
+                    >
                       CONFIDENTIAL
                     </h3>
-                    <h3 className="absolute top-20 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black px-4">
+                    <h3
+                      className="absolute top-20 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black px-4"
+                      name="subjectx"
+                    >
                       SubjectX
                     </h3>
                   </div>
-                  <div className="relative cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto">
+                  <div
+                    className="relative cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto"
+                    name="subjecty"
+                    onClick={() => toggleSubject("SubjectY")}
+                  >
                     <img
                       className="my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
                       src={Disk}
                       width={140}
+                      name="subjecty"
                     />
 
-                    <h3 className="absolute top-10 text-md text-center w-full font-cyber border-2 border-red-700 text-red-700 bg-red-500">
+                    <h3
+                      className="absolute top-10 text-md text-center w-full font-cyber border-2 border-red-700 text-red-700 bg-red-500"
+                      name="subjecty"
+                    >
                       CONFIDENTIAL
                     </h3>
-                    <h3 className="absolute top-20 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black px-4">
+                    <h3
+                      className="absolute top-20 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black px-4"
+                      name="subjecty"
+                    >
                       SubjectY
                     </h3>
                   </div>
