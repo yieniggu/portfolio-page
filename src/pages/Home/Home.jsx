@@ -8,6 +8,7 @@ import Disk from "../../assets/images/diskette2.png";
 import { Modal } from "../../components/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../store/slices/UI/UISlice";
+import { TypeAnimation } from "react-type-animation";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -41,14 +42,28 @@ export const Home = () => {
               </div>
             </div>
             <div className="flex flex-row justify-between  py-10">
-              <div className="mx-auto w-1/2">
+              <div className="flex flex-col gap-2 mx-auto w-1/2">
                 <h1 className="text-4xl text-center font-code-75 leading-relaxed tracking-tight text-matrix-light-green">
                   NOS PROGRAMARON PARA SER{" "}
-                  <span className="text-matrix-green">
-                    {" "}
-                    INGENIEROS DE SOFTWARE
-                  </span>
                 </h1>
+                <span className="text-matrix-green text-4xl text-center font-code-75">
+                  <TypeAnimation
+                    sequence={[
+                      "INGENIEROS DE SOFTWARE",
+                      1000,
+                      "DEVs FULL STACK",
+                      1000,
+                      "DATA SCIENTISTS",
+                      1000,
+                      "DEVS WEB3",
+                      1000,
+                      "AI ENGINEERS",
+                      1000,
+                    ]}
+                    speed={10}
+                    repeat={Infinity}
+                  />
+                </span>
                 <h2 className="text-center text-matrix-dark-green text-2xl mt-20 font-code-75 tracking-tight">
                   {">"}DESCONOCIDO$ QUE DECISION TOMARAS?
                   <span className="animate-ping transition duration-75">|</span>
