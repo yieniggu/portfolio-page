@@ -26,3 +26,7 @@
   font-family: "Mono Code";
   src: url("./assets/fonts/MonoCode.ttf") format("truetype");
 }
+
+body {
+  background-color: black;
+}

@@ -28,7 +28,13 @@ export const Home = () => {
     <div className="max-w-screen overflow-hidden">
       <Layout>
         <Modal />
-        <video className="w-screen" src={GreenCodeMatrix} autoPlay loop muted />
+        <video
+          className="w-screen object-cover"
+          src={GreenCodeMatrix}
+          autoPlay
+          loop
+          muted
+        />
         <div className="absolute flex flex-col grow-0 overflow-hidden">
           <section className="rounded-lg border-2 mx-20 mt-20 flex flex-col bg-gray-700 bg-opacity-90 max-h-fit">
             <div className="flex flex-row bg-gray-400 h-10 rounded-md rounded-b-none">
