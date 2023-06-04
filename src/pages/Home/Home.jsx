@@ -13,6 +13,7 @@ import { TypeAnimation } from "react-type-animation";
 export const Home = () => {
   const dispatch = useDispatch();
   const { modalOpen, modalType } = useSelector((state) => state.ui);
+  const { language } = useSelector((state) => state.ui);
 
   const toggleProjects = () => {
     !modalOpen && dispatch(openModal("projects"));
@@ -29,52 +30,59 @@ export const Home = () => {
       <Layout>
         <Modal />
         <video
-          className="w-screen object-cover"
+          className="w-screen min-h-screen grow-0  object-cover"
           src={GreenCodeMatrix}
           autoPlay
           loop
           muted
         />
-        <div className="absolute flex flex-col grow-0 overflow-hidden">
-          <section className="rounded-lg border-2 mx-20 mt-20 flex flex-col bg-gray-700 bg-opacity-90 max-h-fit">
+        <div className="absolute flex flex-col grow-0 overflow-hidden w-full">
+          <section className="rounded-lg border-2 mx-1 md:mx-20 mt-20 flex flex-col bg-gray-700 w-fit bg-opacity-90 max-h-fit">
             <div className="flex flex-row bg-gray-400 h-10 rounded-md rounded-b-none">
               <div className="flex flex-row justify-between mr-auto my-auto px-2 gap-2">
                 <div className="rounded-full bg-red-500 h-4 w-4"></div>
                 <div className="rounded-full bg-yellow-500 h-4 w-4"></div>
                 <div className="rounded-full bg-green-500 h-4 w-4"></div>
               </div>
-              <div className="text-center mr-auto my-auto font-code-mono text-lg text-gray-900">
-                welcome@Team: ~/
+              <div className="text-center mr-auto my-auto font-code-mono text-lg text-gray-900 hidden md:flex">
+                {language === "es" ? "desconocido" : "unkown"}@source: ~/
               </div>
             </div>
-            <div className="flex flex-row justify-between  py-10">
-              <div className="flex flex-col gap-2 mx-auto w-1/2">
-                <h1 className="text-4xl text-center font-code-75 leading-relaxed tracking-tight text-matrix-light-green">
-                  NOS PROGRAMARON PARA SER{" "}
+            <div className="flex flex-col lg:flex-row justify-between  py-10">
+              <div className="flex flex-col gap-2 mx-auto lg:w-1/2">
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-xl 2xl:text-3xl 3xl:text-4xl text-center font-code-75 leading-relaxed tracking-tight text-matrix-light-green px-1">
+                  {language === "es"
+                    ? "NOS PROGRAMARON PARA SER"
+                    : "WE WERE PROGRAMMED TO BE"}{" "}
                 </h1>
-                <span className="text-matrix-green text-4xl text-center font-code-75">
+                <span className="text-matrix-green sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4xl text-center font-code-75">
                   <TypeAnimation
                     sequence={[
-                      "INGENIEROS DE SOFTWARE",
+                      "SOFTWARE ENGINEERS",
                       1000,
-                      "DEVs FULL STACK",
+                      "FULL STACK DEVs",
                       1000,
                       "DATA SCIENTISTS",
                       1000,
-                      "DEVs WEB3",
+                      "WEB3 DEVs",
                       1000,
-                      "INGENIEROS DE IA",
+                      "AI ENGINEERS",
                       1000,
                     ]}
                     speed={10}
                     repeat={Infinity}
                   />
                 </span>
-                <h2 className="text-center text-matrix-dark-green text-2xl mt-20 font-code-75 tracking-tight">
-                  {">"}DESCONOCIDO$ QUE DECISION TOMARAS?
+                <h2 className="ml-10 3xl:ml-0 3xl:text-center text-matrix-light-green text-lg xl:text-xl 3xl:text-2xl xl:mt-20 mt-10 font-code-75 tracking-tight">
+                  <span className="text-cyan-400">
+                    {"> "} {language === "es" ? "desconocido $ " : "unknown $ "}
+                  </span>{" "}
+                  {language === "es"
+                    ? "cual es tu proxima jugada?"
+                    : "what's your next move?"}
                   <span className="animate-ping transition duration-75">|</span>
                 </h2>
-                <div className="flex flex-row justify-around mt-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 justify-around mt-10 w-full">
                   <div
                     className="flex flex-col group cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto my-auto"
                     onClick={toggleProjects}
@@ -107,9 +115,8 @@ export const Home = () => {
                     onClick={() => toggleSubject("SubjectX")}
                   >
                     <img
-                      className="my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
+                      className="w-28 xl:w-36 my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
                       src={Disk}
-                      width={140}
                       name="subjectx"
                     />
 
@@ -132,9 +139,8 @@ export const Home = () => {
                     onClick={() => toggleSubject("SubjectY")}
                   >
                     <img
-                      className="my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
+                      className="w-28 lg:w-28 xl:w-36 my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
                       src={Disk}
-                      width={140}
                       name="subjecty"
                     />
 
@@ -153,13 +159,15 @@ export const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="relative w-1/2">
+              <div className="relative lg:w-1/2 lg:mt-0 mt-10">
                 <img
-                  className="w-1/2 mx-auto rounded-md backdrop-blur-lg shadow-xl contrast-150 blur-sm cursor-pointer hover:ring-2 transition duration-300 ring-matrix-light-green"
+                  className="w-2/3 3xl:w-1/2 mx-auto rounded-md backdrop-blur-lg shadow-xl contrast-150 blur-sm cursor-pointer hover:ring-2 transition duration-300 ring-matrix-light-green"
                   src={Cameras}
                 />
-                <h2 className="relative bottom-10 left-[270px] text-xl font-matrix text-matrix-light-green">
-                  TENEMOS UN MENSAJE PARA TI
+                <h2 className="w-full relative bottom-10 text-center text-xs sm:text-md md:text-xl lg:text-sm lg:text-md xl:text-xl font-matrix text-matrix-light-green">
+                  {language === "es"
+                    ? "TENEMOS UN MENSAJE PARA TI"
+                    : "WE GOT A MESSAGE FOR YOU"}
                 </h2>
               </div>
             </div>

@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   modalOpen: false,
   modalType: null,
+  language: "es",
+  settingLanguage: true,
 };
 
 export const UISlice = createSlice({
@@ -13,8 +15,15 @@ export const UISlice = createSlice({
       state.modalOpen = true;
       state.modalType = payload;
     },
-    closeModal: () => initialState,
+    setLanguage: (state, { payload }) => {
+      state.language = payload;
+      state.settingLanguage = false;
+    },
+    closeModal: (state) => {
+      state.modalOpen = false;
+      state.modalType = null;
+    },
   },
 });
 
-export const { openModal, closeModal } = UISlice.actions;
+export const { openModal, closeModal, setLanguage } = UISlice.actions;

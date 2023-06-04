@@ -19,3 +19,11 @@ export const getSubjects = async () => {
 
   return docSnap.docs;
 };
+
+export const getProjects = async () => {
+  const projectsRef = collection(db, "projects");
+
+  const docSnap = await getDocs(projectsRef);
+
+  return docSnap.docs;
+};
