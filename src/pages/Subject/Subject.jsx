@@ -8,10 +8,8 @@ import { useSelector } from "react-redux";
 import { BackgroundLoader } from "../../components/loaders/BackgroundLoader";
 import { PowerGlitch } from "powerglitch";
 
-import { skills, socialss } from "./skills";
 import { Info } from "./Info";
 import { Description } from "./Description";
-import { Skills } from "./Skills";
 import { Projects } from "../../components/projects/Projects";
 import { Helmet } from "react-helmet";
 

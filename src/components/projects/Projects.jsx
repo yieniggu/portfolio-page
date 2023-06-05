@@ -37,7 +37,7 @@ export const Projects = ({ projects, modal = false }) => {
                   className={`absolute z-50 top-10 rounded-lg mx-auto  w-full md:w-fit border-matrix-dark-green shadow-lg shadow-matrix-green h-4/5 ${
                     modal
                       ? "3xl:left-80 2xl:left-60 xl:left-56 lg:left-28 md:left-3"
-                      : "md:left-20 lg:left-48 xl:left-20 2xl:left-28 3xl:left-62"
+                      : "md:left-20 lg:left-48 xl:left-20 2xl:left-28 3xl:left-52"
                   }`}
                   src={project?.media?.src}
                   autoPlay
