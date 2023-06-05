@@ -45,5 +45,5 @@ export const socialss = [
   { id: "github", logo: Github },
   { id: "linkedin", logo: Linkedin },
   { id: "telegram", logo: Telegram },
-  { id: "gmail", logo: Gmail },
+  { id: "email", logo: Gmail },
 ];

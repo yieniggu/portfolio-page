@@ -86,7 +86,7 @@ export const Skills = ({ subject }) => {
               ? "ubicaciones probables"
               : "most likely to be in"}
           </h2>
-          <div className="grid grid-cols-3 md:grid-cols-5 w-full text-center gap-4 sm:ml-8 ml-2 xl:mx-auto">
+          <div className="grid grid-cols-3 md:grid-cols-4 w-full text-center gap-4 sm:ml-8 ml-2 xl:mx-auto">
             {Object.keys(subject.socials).map((social) => {
               const foundSocial = socialss.find(
                 (sociall) => sociall.id === social
@@ -95,7 +95,11 @@ export const Skills = ({ subject }) => {
               return (
                 <a
                   className="group flex relative cursor-pointer"
-                  href={subject.socials[social]}
+                  href={
+                    social === "email"
+                      ? `mailto:${subject.socials[social]}`
+                      : subject.socials[social]
+                  }
                   target="_blank"
                 >
                   <img
