@@ -55,7 +55,7 @@ export const SubjectModal = () => {
   return (
     <div className="px-4 py-4 text-matrix-green font-code-mono">
       {first && (
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           <h3 className="text-cyan-400">
             {language === "es" ? "desconocido" : "unknown"}:$
           </h3>
@@ -78,7 +78,7 @@ export const SubjectModal = () => {
       )}
 
       {second && (
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           {" "}
           <h3 className="text-cyan-400">
             {language === "es" ? "desconocido" : "unknown"}:$
@@ -106,7 +106,7 @@ export const SubjectModal = () => {
       )}
 
       {third && (
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           {" "}
           <h3 className="text-cyan-400">
             {language === "es" ? "desconocido" : "unknown"}:$
@@ -134,7 +134,7 @@ export const SubjectModal = () => {
       )}
 
       {fourth && (
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           {" "}
           <h3 className="text-cyan-400">
             {language === "es" ? "desconocido" : "unknown"}:$
@@ -157,7 +157,7 @@ export const SubjectModal = () => {
         </div>
       )}
 
-      <div className="flex flex-row font-cyber justify-center gap-4 text-lg mt-10">
+      <div className="flex flex-col md:flex-row font-cyber justify-center gap-4 text-lg mt-10">
         <button
           className="rounded-full text-purple-500 bg-blue-700  hover:ring-2 ring-blue-900 px-4 py-2 hover:text-purple-300 transition duration-300 shadow-sm shadow-gray-300"
           onClick={onModalClose}

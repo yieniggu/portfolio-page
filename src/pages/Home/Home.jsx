@@ -10,10 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../store/slices/UI/UISlice";
 import { TypeAnimation } from "react-type-animation";
 
+import "animate.css";
+import { Helmet } from "react-helmet";
+
 export const Home = () => {
   const dispatch = useDispatch();
   const { modalOpen, modalType } = useSelector((state) => state.ui);
   const { language } = useSelector((state) => state.ui);
+  const { subjects } = useSelector((state) => state.subject);
 
   const toggleProjects = () => {
     !modalOpen && dispatch(openModal("projects"));
@@ -28,6 +32,11 @@ export const Home = () => {
   return (
     <div className="max-w-screen overflow-hidden">
       <Layout>
+        <Helmet>
+          <title>
+            {language === "es" ? "desconocido" : "unknown"}@source:$ ~/
+          </title>
+        </Helmet>
         <Modal />
         <video
           className="w-screen min-h-screen grow-0  object-cover"
@@ -36,8 +45,8 @@ export const Home = () => {
           loop
           muted
         />
-        <div className="absolute flex flex-col grow-0 overflow-hidden w-full">
-          <section className="rounded-lg border-2 mx-1 md:mx-20 mt-20 flex flex-col bg-gray-700 w-fit bg-opacity-90 max-h-fit">
+        <div className="absolute flex flex-col overflow-hidden w-full animate__animated animate__zoomInUp animate__faster">
+          <section className="rounded-lg border-2 mx-auto mt-20 flex flex-col bg-gray-700 w-11/12 bg-opacity-90 max-h-fit">
             <div className="flex flex-row bg-gray-400 h-10 rounded-md rounded-b-none">
               <div className="flex flex-row justify-between mr-auto my-auto px-2 gap-2">
                 <div className="rounded-full bg-red-500 h-4 w-4"></div>
@@ -82,14 +91,14 @@ export const Home = () => {
                     : "what's your next move?"}
                   <span className="animate-ping transition duration-75">|</span>
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 justify-around mt-10 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 justify-around mt-10 w-full">
                   <div
-                    className="flex flex-col group cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto my-auto"
+                    className="flex flex-col group cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto my-auto animate__animated animate__fadeInUp"
                     onClick={toggleProjects}
                   >
                     <div className="relative">
                       <img
-                        className="shadow-md shadow-matrix-dark-green rounded-md"
+                        className="shadow-md shadow-matrix-dark-green rounded-md group-hover:shadow-lg group-hover:shadow-matrix-dark-green transition duration-300"
                         src={
                           modalOpen && modalType === "projects"
                             ? OpenFolder
@@ -109,54 +118,25 @@ export const Home = () => {
                       </h3>
                     </div>
                   </div>
-                  <div
-                    className="relative cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto"
-                    name="subjectx"
-                    onClick={() => toggleSubject("SubjectX")}
-                  >
-                    <img
-                      className="w-28 xl:w-36 my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
-                      src={Disk}
-                      name="subjectx"
-                    />
 
-                    <h3
-                      className="absolute top-10 text-md text-center w-full border-2 border-red-700 font-cyber text-red-700 bg-red-500"
-                      name="subjectx"
+                  {subjects.map((subject) => (
+                    <div
+                      className="relative cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto animate__animated animate__fadeInUp group"
+                      onClick={() => toggleSubject(subject.id)}
                     >
-                      CONFIDENTIAL
-                    </h3>
-                    <h3
-                      className="absolute top-20 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black px-4"
-                      name="subjectx"
-                    >
-                      SubjectX
-                    </h3>
-                  </div>
-                  <div
-                    className="relative cursor-pointer hover:-translate-y-4 transition duration-300 mx-auto"
-                    name="subjecty"
-                    onClick={() => toggleSubject("SubjectY")}
-                  >
-                    <img
-                      className="w-28 lg:w-28 xl:w-36 my-auto mx-auto shadow-md rounded-md shadow-matrix-dark-green"
-                      src={Disk}
-                      name="subjecty"
-                    />
+                      <img
+                        className="w-28 xl:w-36 my-auto mx-auto shadow-md rounded-md group-hover:shadow-lg group-hover:shadow-matrix-dark-green shadow-matrix-dark-green transition duration-300"
+                        src={Disk}
+                      />
 
-                    <h3
-                      className="absolute top-10 text-md text-center w-full font-cyber border-2 border-red-700 text-red-700 bg-red-500"
-                      name="subjecty"
-                    >
-                      CONFIDENTIAL
-                    </h3>
-                    <h3
-                      className="absolute top-20 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black px-4"
-                      name="subjecty"
-                    >
-                      SubjectY
-                    </h3>
-                  </div>
+                      <h3 className="absolute top-10 text-md text-center w-full border-2 border-red-700 font-cyber text-red-700 bg-red-500">
+                        CONFIDENTIAL
+                      </h3>
+                      <h3 className="absolute top-20 w-full text-center text-xl font-cyber text-gray-300 -rotate-6 bg-black px-4">
+                        {subject.id}
+                      </h3>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="relative lg:w-1/2 lg:mt-0 mt-10">

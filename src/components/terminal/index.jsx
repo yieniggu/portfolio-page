@@ -8,7 +8,7 @@ export const Terminal = ({ children, title, modal = false }) => {
 
   return (
     <div>
-      <div className="w-full md:w-full rounded-lg border-2 md:mx-auto mt-5 flex flex-col bg-gray-700 bg-opacity-90  mb-10 overflow-y-auto overflow-x-hidden">
+      <div className="w-full md:w-full rounded-lg border-2 md:mx-auto mt-5 flex flex-col bg-gray-700 bg-opacity-90  mb-10 overflow-y-auto overflow-x-hidden ">
         <div className="flex flex-row bg-gray-400 h-10 rounded-md rounded-b-none">
           <div className="flex flex-row justify-between mr-auto my-auto px-2 gap-2">
             <div

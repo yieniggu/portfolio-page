@@ -26,7 +26,7 @@ export const Skills = ({ subject }) => {
               ? "habilidades principales"
               : "main known skills"}
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 w-full text-center gap-4 mx-auto">
+          <div className="grid grid-cols-3 md:grid-cols-5 w-full text-center gap-4 sm:ml-8 ml-2 xl:mx-auto">
             {subject.devSkills.map((devSkill) => {
               const foundSkill = skills.find((skill) => skill.id === devSkill);
 
@@ -54,7 +54,7 @@ export const Skills = ({ subject }) => {
             {language === "es" ? "otras habilidades" : "other known skills"}
           </h2>
 
-          <div className="grid grid-cols-5 w-full text-center gap-4">
+          <div className="grid grid-cols-3 md:grid-cols-5 w-full text-center gap-4 sm:ml-8 ml-2 xl:mx-auto">
             {subject.otherSkills.map((otherSkill) => {
               const foundSkill = skills.find(
                 (skill) => skill.id === otherSkill
@@ -86,7 +86,7 @@ export const Skills = ({ subject }) => {
               ? "ubicaciones probables"
               : "most likely to be in"}
           </h2>
-          <div className="grid grid-cols-5 w-full text-center gap-4">
+          <div className="grid grid-cols-3 md:grid-cols-5 w-full text-center gap-4 sm:ml-8 ml-2 xl:mx-auto">
             {Object.keys(subject.socials).map((social) => {
               const foundSocial = socialss.find(
                 (sociall) => sociall.id === social

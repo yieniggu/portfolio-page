@@ -13,12 +13,14 @@ import { Info } from "./Info";
 import { Description } from "./Description";
 import { Skills } from "./Skills";
 import { Projects } from "../../components/projects/Projects";
+import { Helmet } from "react-helmet";
 
 export const Subject = () => {
   const { id } = useParams();
 
   const { subjects } = useSelector((state) => state.subject);
   const { projects } = useSelector((state) => state.project);
+  const { language } = useSelector((state) => state.project);
 
   const [subject, setSubject] = useState(null);
   const [subjectProjects, setSubjectProjects] = useState(null);
@@ -74,6 +76,11 @@ export const Subject = () => {
     <div className="w-full min-h-screen overflow-hidden">
       {subject ? (
         <Layout>
+          <Helmet>
+            <title>
+              {language === "es" ? "desconocido" : "unknown"}@source:$ ~/{id}
+            </title>
+          </Helmet>
           <Modal />
           <video
             className="min-h-screen object-cover"
@@ -83,19 +90,23 @@ export const Subject = () => {
             muted
           />
 
-          <div className="absolute flex flex-col xl:flex-row justify-between xl:1/3 w-11/12 mx-auto 3xl:gap-6 mt-14">
-            <div className="2xl:w-2/5 xl:w-3/6 w-full sm:mx-6 mx-auto">
+          <div className="absolute flex flex-col xl:flex-row justify-between xl:1/3 w-11/12 ml-4 sm:mx-auto 3xl:gap-6 mt-14">
+            <div className="2xl:w-2/5 xl:w-3/6 w-full sm:mx-6 mx-auto animate__animated animate__fadeInLeft animate__faster">
               <Terminal title={`${id}/info`}>
                 <Info subject={subject} />
               </Terminal>
             </div>
-            <div className="flex flex-col gap-4 w-full xl:w-3/5 2xl:w-4/6 3xl:w-3/5 sm:ml-6 mx-auto">
-              <Terminal title={`${id}/description`}>
-                <Description subject={subject} />
-              </Terminal>
-              <Terminal title={`${id}/projects`}>
-                {subjectProjects && <Projects projects={subjectProjects} />}
-              </Terminal>
+            <div className="flex flex-col gap-4 w-full xl:w-3/5  sm:ml-6 mx-auto">
+              <div className="animate__animated animate__fadeInRight animate__fast">
+                <Terminal title={`${id}/description`}>
+                  <Description subject={subject} />
+                </Terminal>
+              </div>
+              <div className="animate__animated animate__fadeInRight">
+                <Terminal title={`${id}/projects`}>
+                  {subjectProjects && <Projects projects={subjectProjects} />}
+                </Terminal>
+              </div>
             </div>
           </div>
         </Layout>

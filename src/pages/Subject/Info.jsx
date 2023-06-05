@@ -32,7 +32,7 @@ export const Info = ({ subject }) => {
               ? subject.profile.handler.es
               : subject.profile.handler.en}
           </h1>
-          <h2 className="text-matrix-light-green text-sm sm:text-lg md:text-sm lg:text-lg md:mx-0 mx-auto">
+          <h2 className="text-matrix-light-green text-sm sm:text-lg md:text-sm lg:text-lg md:mx-0 sm:mx-auto text-center md:text-left">
             {" "}
             {language === "es"
               ? "visto por ultima vez en"

@@ -20,21 +20,24 @@ export const Projects = ({ projects, modal = false }) => {
 
   return (
     <div className="relative">
-      <h2 className="absolute top-2/3 py-0 right-0 font-cyber text-matrix-light-green text-xl z-50 font-bold tracking-widest px-2 bg-matrix-dark-green">
+      <h2 className="absolute top-1/2 md:top-2/3 py-0 right-0 font-cyber text-matrix-light-green text-xl z-50 font-bold tracking-widest px-2 bg-matrix-dark-green hover:opacity-10">
         {language === "es" ? "DESLIZAR" : "SWIPE"}
       </h2>
       <Slider {...settings}>
         {projects.map((project) => (
           <div className="flex flex-col w-3/4 md:text-md lg:text-lg text-xs">
             <div className="relative flex h-5/6">
-              <img className="-z-50 blur-sm h-96 w-full" src={project?.cover} />
+              <img
+                className="-z-50 blur-sm h-72 md:h-96 w-full"
+                src={project?.cover}
+              />
 
               {project.media.type === "video" ? (
                 <video
-                  className={`absolute z-50 top-10 rounded-lg mx-auto  w-full lg:w-fit border-matrix-dark-green shadow-lg shadow-matrix-green h-4/5 ${
+                  className={`absolute z-50 top-10 rounded-lg mx-auto  w-full md:w-fit border-matrix-dark-green shadow-lg shadow-matrix-green h-4/5 ${
                     modal
-                      ? "3xl:left-48 2xl:left-60 xl:left-56 lg:left-28"
-                      : "md:left-20 lg:left-48 xl:left-20 2xl:left-36 3xl:left-64 "
+                      ? "3xl:left-80 2xl:left-60 xl:left-56 lg:left-28 md:left-3"
+                      : "md:left-20 lg:left-48 xl:left-20 2xl:left-28 3xl:left-62"
                   }`}
                   src={project?.media?.src}
                   autoPlay
@@ -42,7 +45,14 @@ export const Projects = ({ projects, modal = false }) => {
                   muted
                 />
               ) : (
-                <img className="absolute" src={project?.media?.src} />
+                <img
+                  className={`absolute w-full ${
+                    modal
+                      ? "top-10 md:w-11/12 md:left-6 lg:w-4/5 lg:h-4/5 lg:left-20 xl:w-3/5 xl:left-48"
+                      : "lg:w-4/5 3xl:w-3/5 lg:left-20 3xl:left-1/4 lg:h-5/6  top-20 md:top-10 md:w-4/5 md:left-20 lg:top-6"
+                  }   sm:top-8 mx-auto rounded-lg shadow-lg shadow-matrix-green  h-fit w-full  `}
+                  src={project?.media?.src}
+                />
               )}
 
               <div className="flex flex-row justify-end gap-4 absolute z-50 bottom-0 rounded-md right-0 bg-gray-600 bg-opacity-90 p-2 mb-2 rounded-r-none">
@@ -74,7 +84,7 @@ export const Projects = ({ projects, modal = false }) => {
                   {language === "es" ? "c" : "t"}ion.txt
                 </span>
               </h2>
-              <h3 className="text-gray-200 px-2 font-code-mono">
+              <h3 className="text-gray-200 px-2 font-code-mono text-justify">
                 {"> "}
                 {project.description[language]}
               </h3>
@@ -92,9 +102,9 @@ export const Projects = ({ projects, modal = false }) => {
                   </h3>
                 ))}
               </div>
-              <div className="flex flex-row mt-4 gap-2 justify-start">
+              <div className="grid grid-cols-2 md:grid-cols-5 lg:flex lg:flex-row mt-4 gap-2 lg:w-fit justify-start">
                 {project.tags.map((tag) => (
-                  <h3 className="font-matrix px-2 rounded-full bg-gray-600 bg-opacity-80 text-matrix-green w-fit my-auto text-xs">
+                  <h3 className="font-matrix rounded-full w-full text-center px-4 bg-gray-600 bg-opacity-80 text-matrix-green my-auto text-xs">
                     {tag}
                   </h3>
                 ))}
