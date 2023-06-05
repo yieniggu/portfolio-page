@@ -95,14 +95,18 @@ export const Projects = ({ projects, modal = false }) => {
                 </span>
                 {project.authors.join(", ")}
               </h3>
-              <div className="flex flex-row mt-4 gap-2">
+              <div className="grid sm:grid-cols-4 grid-cols-3  md:flex md:flex-row mt-4 gap-2">
                 {project.stack.map((tech) => (
                   <h3 className="font-matrix px-2 rounded-full bg-gray-600 bg-opacity-80 text-matrix-dark-green w-fit">
                     {tech}
                   </h3>
                 ))}
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-5 lg:flex lg:flex-row mt-4 gap-2 lg:w-fit justify-start">
+              <div
+                className={
+                  "grid grid-cols-2 md:grid-cols-5 lg:flex lg:flex-row mt-4 gap-2 lg:w-fit justify-start "
+                }
+              >
                 {project.tags.map((tag) => (
                   <h3 className="font-matrix rounded-full w-full text-center px-4 bg-gray-600 bg-opacity-80 text-matrix-green my-auto text-xs">
                     {tag}
